@@ -69,32 +69,69 @@ The models are evaluated using:
 
 ---
 
-Dataset
+## Dataset
 
-- UNSW-NB15 Dataset
-- Contains real-world network traffic data
+This project uses the UNSW-NB15 dataset, a comprehensive and modern network intrusion detection dataset developed by the University of New South Wales (UNSW Canberra). The dataset contains realistic network traffic with both normal and malicious activities, making it suitable for evaluating intrusion detection systems, especially for detecting zero-day attacks.
 
-Note: The dataset is not included in this repository due to size limitations.
+The dataset includes a wide range of attack categories such as DoS, Exploits, Reconnaissance, Shellcode, and Generic attacks, along with normal traffic. It provides rich feature representations extracted using the IXIA PerfectStorm tool, enabling both anomaly detection and classification-based approaches.
 
-Download the dataset from the official source:
-https://research.unsw.edu.au/projects/unsw-nb15-dataset
-
-Instructions to Access the Dataset
-
-1. Open the above link in a browser
-2. Scroll down to find the sentence containing the dataset access link
-3. Click on the "HERE" hyperlink provided on the page
-4. This will redirect you to the dataset repository
-5. Navigate to the CSV Files section
-6. Open the folder named "Training and Testing Sets"
-7. Download the following files:
-   - UNSW_NB15_training-set.csv
-   - UNSW_NB15_testing-set.csv
-
-After downloading, place the files inside a "data/" directory in your project.
+Due to its large size, the dataset is not included directly in this repository.
 
 ---
 
+### Dataset Access
+
+You can access the dataset using the following links:
+
+Official UNSW Dataset Page:  
+https://research.unsw.edu.au/projects/unsw-nb15-dataset
+
+Google Drive link for the dataset:  
+https://drive.google.com/drive/folders/1e_HZF2vxGjYwr4ix3-3cPx93rmfY0AzM?usp=drive_link
+
+---
+
+### Instructions to Download
+
+1. Open the official UNSW dataset link  
+2. Click on the download section or "Here" link provided on the page  
+3. Navigate to the CSV Files directory  
+4. Open the "Training and Testing Sets" folder  
+5. Download the following files:
+   - UNSW_NB15_training-set.csv  
+   - UNSW_NB15_testing-set.csv  
+
+Alternatively, you can directly download the dataset from the provided Google Drive link.
+
+---
+
+### Dataset Placement
+
+After downloading, place the dataset files in the following directory:
+
+data/raw/
+
+Required files:
+
+- UNSW_NB15_training-set.csv  
+- UNSW_NB15_testing-set.csv  
+
+---
+
+### Dataset Description
+
+- Total Records: Approximately 2.5 million network flows  
+- Features: 49 features including flow-based, content-based, time-based, and additional generated features  
+- Classes: Binary classification (Normal / Attack) and multi-class attack categories  
+- Data Type: Tabular (CSV format)  
+
+---
+
+### Notes
+
+- The dataset is hosted externally due to GitHub file size limitations  
+- Ensure correct file placement before running training scripts  
+- Preprocessing steps such as encoding and scaling are handled within the project pipeline
 Project Structure
 
 XAI-HYBRID-ZERODAY-IDS_SYSTEM/
