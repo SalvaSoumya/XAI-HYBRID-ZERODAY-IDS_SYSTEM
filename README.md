@@ -1,208 +1,351 @@
-XAI-Based Hybrid Zero-Day Intrusion Detection System
+# Explainable AI-Based Hybrid Zero-Day Intrusion Detection System
 
-Overview
+An advanced hybrid Intrusion Detection System (IDS) designed to detect both known and unknown cyber attacks using Machine Learning, Anomaly Detection, and Explainable AI techniques.
 
-This project presents a hybrid machine learning-based Intrusion Detection System (IDS) designed to detect zero-day cyber attacks. The system integrates both unsupervised anomaly detection and supervised classification models to enhance detection performance.
-
-Additionally, Explainable Artificial Intelligence (XAI) techniques are incorporated to provide transparency and interpretability of predictions, making the system more reliable for real-world cybersecurity applications.
+The system combines supervised and unsupervised learning models to improve intrusion detection accuracy while providing transparent and interpretable predictions through SHAP and LIME.
 
 ---
 
-Objectives
+## Overview
 
-- Detect unknown (zero-day) cyber attacks effectively
-- Improve detection accuracy using hybrid modeling
-- Provide explainable insights for decision-making
-- Enable real-time monitoring through an interactive dashboard
+Traditional Intrusion Detection Systems struggle to detect zero-day attacks because they rely heavily on predefined attack signatures.
 
----
+This project introduces a hybrid IDS framework that combines:
 
-Methodology
+- Isolation Forest for anomaly detection
+- Random Forest for supervised classification
+- XGBoost for boosted classification performance
+- Explainable AI techniques for model transparency
 
-Data Preprocessing
-
-- Handling missing values
-- Encoding categorical variables
-- Feature scaling and normalization
-- Feature selection for optimal performance
-
-Machine Learning Models
-
-The system uses a hybrid combination of:
-
-- Isolation Forest → Detects anomalies (zero-day attacks)
-- Random Forest → Classifies network traffic
-- XGBoost → Enhances prediction accuracy using boosting
-
-Hybrid Decision Engine
-
-- Combines outputs from multiple models
-- Improves robustness in detecting both known and unknown attacks
+The system is capable of detecting both known and previously unseen cyber attacks while providing interpretable insights into model decisions.
 
 ---
 
-Explainable AI (XAI)
+## Objectives
 
-To improve transparency and interpretability:
-
-- SHAP (SHapley Additive Explanations)
-  
-  - Provides global feature importance
-  - Helps understand overall model behavior
-
-- LIME (Local Interpretable Model-agnostic Explanations)
-  
-  - Explains individual predictions
-  - Shows why a sample is classified as attack or normal
+- Detect zero-day cyber attacks effectively
+- Improve intrusion detection accuracy
+- Reduce false negatives and false positives
+- Provide explainable AI-based insights
+- Support real-time intrusion monitoring
+- Build an interactive cybersecurity dashboard
 
 ---
 
-Performance Metrics
+## Key Features
 
-The models are evaluated using:
+- Hybrid Machine Learning approach
+- Zero-day attack detection
+- Real-time intrusion analysis
+- Explainable AI integration
+- SHAP-based feature importance
+- LIME-based prediction explanation
+- Interactive Streamlit dashboard
+- Network traffic visualization
+- High recall for attack detection
 
-- Accuracy
-- Precision
-- Recall (Sensitivity)
-- F1-Score
-- ROC-AUC
+---
+
+## Machine Learning Models
+
+### Isolation Forest
+- Unsupervised anomaly detection
+- Detects unknown and zero-day attacks
+
+### Random Forest
+- Supervised classification model
+- Detects known attack patterns
+
+### XGBoost
+- Gradient boosting classification
+- Improves prediction performance and robustness
+
+---
+
+## Hybrid Detection Mechanism
+
+The system combines predictions from:
+
+- Isolation Forest
+- Random Forest
+- XGBoost
+
+A voting-based hybrid decision engine is used to generate the final prediction, improving overall detection capability and reducing classification errors.
+
+---
+
+## Explainable AI (XAI)
+
+The project integrates Explainable Artificial Intelligence techniques to improve transparency and trust in cybersecurity predictions.
+
+### SHAP (SHapley Additive Explanations)
+- Global feature importance analysis
+- Explains overall model behavior
+- Identifies most influential network traffic features
+
+### LIME (Local Interpretable Model-Agnostic Explanations)
+- Explains individual predictions
+- Shows why a network sample is classified as attack or normal
 
 ---
 
 ## Dataset
 
-This project uses the UNSW-NB15 dataset, a comprehensive and modern network intrusion detection dataset developed by the University of New South Wales (UNSW Canberra). The dataset contains realistic network traffic with both normal and malicious activities, making it suitable for evaluating intrusion detection systems, especially for detecting zero-day attacks.
+This project uses the **UNSW-NB15 dataset**, a modern network intrusion detection dataset developed by UNSW Canberra.
 
-The dataset includes a wide range of attack categories such as DoS, Exploits, Reconnaissance, Shellcode, and Generic attacks, along with normal traffic. It provides rich feature representations extracted using the IXIA PerfectStorm tool, enabling both anomaly detection and classification-based approaches.
+The dataset includes:
 
-Due to its large size, the dataset is not included directly in this repository.
+- Normal network traffic
+- Malicious traffic
+- Multiple attack categories:
+  - DoS
+  - Exploits
+  - Reconnaissance
+  - Shellcode
+  - Generic attacks
+
+### Dataset Features
+
+- Approximately 2.5 million network flows
+- 49 network traffic features
+- Binary classification:
+  - Normal Traffic
+  - Attack Traffic
 
 ---
 
-### Dataset Access
+## Dataset Access
 
-You can access the dataset using the following links:
+### Official UNSW Dataset
 
-Official UNSW Dataset Page:  
 https://research.unsw.edu.au/projects/unsw-nb15-dataset
 
-Google Drive link for the dataset:  
-https://drive.google.com/drive/folders/1e_HZF2vxGjYwr4ix3-3cPx93rmfY0AzM?usp=drive_link
+### Google Drive Dataset Link
+
+https://drive.google.com/drive/folders/1e_HZF2vxGjYwr4ix3-3cPx93rmfY0AzM?usp=sharing
 
 ---
 
-### Instructions to Download
+## Data Preprocessing
 
-1. Open the official UNSW dataset link  
-2. Click on the download section or "Here" link provided on the page  
-3. Navigate to the CSV Files directory  
-4. Open the "Training and Testing Sets" folder  
-5. Download the following files:
-   - UNSW_NB15_training-set.csv  
-   - UNSW_NB15_testing-set.csv  
+The preprocessing pipeline includes:
 
-Alternatively, you can directly download the dataset from the provided Google Drive link.
+- Missing value handling
+- Feature scaling
+- Feature normalization
+- Categorical encoding
+- Feature selection
+- Data cleaning
 
----
+Selected important features include:
 
-### Dataset Placement
-
-After downloading, place the dataset files in the following directory:
-
-data/raw/
-
-Required files:
-
-- UNSW_NB15_training-set.csv  
-- UNSW_NB15_testing-set.csv  
-
----
-
-### Dataset Description
-
-- Total Records: Approximately 2.5 million network flows  
-- Features: 49 features including flow-based, content-based, time-based, and additional generated features  
-- Classes: Binary classification (Normal / Attack) and multi-class attack categories  
-- Data Type: Tabular (CSV format)  
+- proto
+- service
+- state
+- spkts
+- dpkts
+- sbytes
+- dbytes
+- rate
+- sttl
+- dttl
 
 ---
 
-### Notes
+## Performance Metrics
 
-- The dataset is hosted externally due to GitHub file size limitations  
-- Ensure correct file placement before running training scripts  
-- Preprocessing steps such as encoding and scaling are handled within the project pipeline
-Project Structure
+The models are evaluated using:
 
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
+
+---
+
+## Model Performance
+
+| Model | Accuracy | Recall | F1-Score | ROC-AUC |
+|------|------|------|------|------|
+| Isolation Forest | 66.83% | 51.66% | 63.17% | 0.7908 |
+| Random Forest | 87.04% | 98.65% | 89.34% | 0.9794 |
+| XGBoost | 87.04% | 98.65% | 89.34% | 0.9794 |
+| Hybrid Model | 82.26% | 99.32% | 86.64% | 0.9831 |
+
+The hybrid model achieved the highest recall, making it highly effective for detecting malicious network traffic with reduced false negatives.
+
+---
+
+## System Architecture
+
+The system workflow includes:
+
+1. Data Collection
+2. Data Preprocessing
+3. Feature Engineering
+4. Model Training
+5. Hybrid Decision Engine
+6. Explainable AI Analysis
+7. Real-Time Dashboard Visualization
+
+---
+
+## Technologies Used
+
+### Programming Language
+- Python
+
+### Machine Learning
+- Scikit-learn
+- XGBoost
+- Isolation Forest
+
+### Explainable AI
+- SHAP
+- LIME
+
+### Data Processing
+- Pandas
+- NumPy
+
+### Visualization
+- Matplotlib
+- Seaborn
+- Plotly
+
+### Dashboard
+- Streamlit
+
+### Development Tools
+- Jupyter Notebook
+
+---
+
+## Project Structure
+
+```bash
 XAI-HYBRID-ZERODAY-IDS_SYSTEM/
 │
-├── src/                 # Core ML models and preprocessing
-├── notebooks/           # Jupyter notebooks for analysis
-├── ui/                  # Streamlit dashboard
-├── train_models.py      # Model training script
-├── README.md            # Project documentation
+├── data/
+│   └── raw/
+│
+├── src/
+│   ├── preprocessing/
+│   ├── models/
+│   ├── xai/
+│   └── hybrid_engine/
+│
+├── notebooks/
+│
+├── ui/
+│   └── app.py
+│
+├── train_models.py
+├── requirements.txt
+├── README.md
+└── results/
+```
 
 ---
 
-How to Run
+## Installation & Setup
 
-Step 1: Install dependencies
+### 1. Clone Repository
 
+```bash
+git clone https://github.com/SalvaSoumya/XAI-HYBRID-ZERODAY-IDS_SYSTEM.git
+
+cd XAI-HYBRID-ZERODAY-IDS_SYSTEM
+```
+
+---
+
+### 2. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-Step 2: Train the models
+---
 
+### 3. Download Dataset
+
+Download:
+
+- UNSW_NB15_training-set.csv
+- UNSW_NB15_testing-set.csv
+
+Place files inside:
+
+```bash
+data/raw/
+```
+
+---
+
+### 4. Train Models
+
+```bash
 python train_models.py
+```
 
-Step 3: Run the dashboard
+---
 
+### 5. Run Dashboard
+
+```bash
 streamlit run ui/app.py
+```
 
 ---
 
-Visualization and Dashboard
+## Dashboard Features
 
-- Real-time intrusion detection
+- Real-time intrusion prediction
 - Feature importance visualization
-- Model predictions display
+- Attack detection results
+- Interactive cybersecurity analytics
+- Model prediction explanations
 
 ---
 
-Key Features
+## Results & Analysis
 
-- Hybrid ML approach (Anomaly + Classification)
-- Zero-day attack detection
-- Explainable AI (SHAP + LIME)
-- Interactive Streamlit dashboard
-- Improved accuracy and robustness
-
----
-
-Limitations
-
-- Dataset not included due to size constraints
-- Performance depends on quality of training data
-- Requires computational resources for training
+- Random Forest and XGBoost achieved high classification accuracy
+- Isolation Forest improved zero-day anomaly detection
+- Hybrid model achieved highest recall
+- Explainable AI improved model transparency
+- Streamlit dashboard enabled interactive monitoring
 
 ---
 
-Future Work
+## Limitations
 
-- Integration of deep learning models
-- Real-time network data streaming
-- Cloud-based deployment
+- Dataset is not included due to size constraints
+- Requires computational resources for model training
+- Performance depends on dataset quality and preprocessing
+
+---
+
+## Future Enhancements
+
+- Deep learning-based intrusion detection
+- Real-time network packet streaming
+- Cloud deployment
 - Advanced explainability techniques
+- IoT network intrusion detection support
 
 ---
 
-Author
+## License
 
-SalvaSoumya
-
----
-
-Conclusion
-
-This project demonstrates a robust hybrid IDS capable of detecting zero-day attacks with improved accuracy and interpretability. The integration of Explainable AI enhances transparency, making the system more suitable for practical cybersecurity applications.
+This project is developed for academic and educational purposes.
 
 ---
+
+## Author
+
+Salva Soumya
+
+GitHub: https://github.com/SalvaSoumya
